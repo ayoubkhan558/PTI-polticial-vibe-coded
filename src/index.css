@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* PTI Branding - HSL System */
+  --color-primary-h: 0;
+  --color-primary-s: 84%;
+  --color-primary-l: 45%;
+  --color-primary: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+  
+  --color-secondary-h: 140;
+  --color-secondary-s: 100%;
+  --color-secondary-l: 20%;
+  --color-secondary: hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l));
+
+  --color-neutral-h: 0;
+  --color-neutral-s: 0%;
+  --color-neutral-l: 98%;
+  --color-neutral: hsl(var(--color-neutral-h), var(--color-neutral-s), var(--color-neutral-l));
+
+  --color-dark-h: 0;
+  --color-dark-s: 0%;
+  --color-dark-l: 5%;
+  --color-dark: hsl(var(--color-dark-h), var(--color-dark-s), var(--color-dark-l));
+
+  /* Spacing System */
+  --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --space-sm: clamp(1rem, 2vw, 1.5rem);
+  --space-md: clamp(2rem, 4vw, 3rem);
+  --space-lg: clamp(4rem, 8vw, 6rem);
+  --space-xl: clamp(6rem, 12vw, 10rem);
+
+  /* Typography System */
+  --text-display: clamp(3rem, 8vw, 7rem);
+  --text-h1: clamp(2.5rem, 6vw, 5rem);
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 3vw, 2.5rem);
+  --text-body: clamp(1rem, 1.2vw, 1.125rem);
+}
+
+:root {
+  --bg: var(--color-neutral);
+  --fg: var(--color-dark);
+  --accent: var(--color-primary);
+  --card-bg: white;
+  --border: rgba(0,0,0,0.08);
+  
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+[data-theme='dark'] {
+  --bg: var(--color-dark);
+  --fg: var(--color-neutral);
+  --card-bg: #111;
+  --border: rgba(255,255,255,0.1);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.section-padding {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.container-custom {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+
+/* Custom Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 5%));
+}
+
+.btn-outline {
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+/* Animations */
+.reveal-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.reveal-text span {
+  display: block;
+}
